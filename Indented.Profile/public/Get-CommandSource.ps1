@@ -1,10 +1,19 @@
 function Get-CommandSource {
+    <#
+    .SYNOPSIS
+        Get the source of a command.
+    .DESCRIPTION
+        Get the source of a command.
+    #>
+
     [CmdletBinding()]
     [Alias('source')]
     param (
+        # The name of a command.
         [Parameter(Mandatory, Position = 1, ValueFromPipelineByPropertyName, ParameterSetName = 'ByName')]
         [String]$Name,
 
+        # A CommandInfo object.
         [Parameter(Mandatory, ValueFromPipeline, ParameterSetName = 'FromCommandInfo')]
         [System.Management.Automation.CommandInfo]$CommandInfo
     )

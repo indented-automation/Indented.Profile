@@ -1,12 +1,22 @@
 function Get-CommandInfo {
+    <#
+    .SYNOPSIS
+        Get-Command helper.
+    .DESCRIPTION
+        Get-Command helper.
+    #>
+
     [CmdletBinding()]
     param (
+        # The name of a command.
         [Parameter(Mandatory, ParameterSetName = 'ByName')]
         [String]$Name,
 
+        # A CommandInfo object.
         [Parameter(Mandatory, ParameterSetName = 'FromCommandInfo')]
         [System.Management.Automation.CommandInfo]$CommandInfo,
 
+        # Claims and discards any other supplied arguments.
         [Parameter(ValueFromRemainingArguments, DontShow)]
         $EaterOfArgs
     )

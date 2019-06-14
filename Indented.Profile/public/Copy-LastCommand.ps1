@@ -1,4 +1,11 @@
 function Copy-LastCommand {
+    <#
+    .SYNOPSIS
+        Copy the last command to the clipboard.
+    .DESCRIPTION
+        Copy the last command to the clipboard.
+    #>
+
     [CmdletBinding()]
     [Alias('last')]
     param ( )

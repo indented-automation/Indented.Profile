@@ -1,6 +1,14 @@
 function Set-Secure {
-    [CmdletBinding()]
+    <#
+    .SYNOPSIS
+        Store a credential.
+    .DESCRIPTION
+        Store a credential in an xml file created
+    #>
+
+    [CmdletBinding(SupportsShouldProcess)]
     param (
+        # The name of the credential to set.
         [Parameter(Mandatory, Position = 1)]
         [String]$Name
     )
