@@ -5,19 +5,19 @@ online version:
 schema: 2.0.0
 ---
 
-# Start-ElevatedConsole
+# Open-Module
 
 ## SYNOPSIS
-Creates a new elevated PowerShell session.
+Open the specified module in Visual Studio Code.
 
 ## SYNTAX
 
 ```
-Start-ElevatedConsole [<CommonParameters>]
+Open-Module [-ModuleName] <String> [[-Version] <Version>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Creates a new elevated PowerShell session, supports all versions of PowerShell.
+Open the specified module in Visual Studio Code.
 
 ## EXAMPLES
 
@@ -29,6 +29,36 @@ PS C:\> {{ Add example code here }}
 {{ Add example description here }}
 
 ## PARAMETERS
+
+### -ModuleName
+The name of the module to open.
+
+```yaml
+Type: String
+Parameter Sets: (All)
+Aliases:
+
+Required: True
+Position: 1
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Version
+The version of the module to open.
+
+```yaml
+Type: Version
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: 2
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
 
 ### CommonParameters
 This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).

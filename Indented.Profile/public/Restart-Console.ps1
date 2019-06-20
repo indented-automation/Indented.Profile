@@ -1,4 +1,11 @@
 function Restart-Console {
+    <#
+    .SYNOPSIS
+        Restart the console.
+    .DESCRIPTION
+        Restart the console and put it back where I left it.
+    #>
+
     if (-not ('Window' -as [Type])) {
         Add-Type '
             using System;

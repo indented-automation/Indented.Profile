@@ -8,7 +8,7 @@ schema: 2.0.0
 # Get-Secure
 
 ## SYNOPSIS
-{{ Fill in the Synopsis }}
+Get a stored credential.
 
 ## SYNTAX
 
@@ -23,7 +23,7 @@ Get-Secure [-List] [-NoClipboard] [-AsEnvironmentVariable] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-{{ Fill in the Description }}
+Get a stored credential.
 
 ## EXAMPLES
 
@@ -36,23 +36,23 @@ PS C:\> {{ Add example code here }}
 
 ## PARAMETERS
 
-### -AsEnvironmentVariable
-{{ Fill AsEnvironmentVariable Description }}
+### -Name
+The name which identifies a credential.
 
 ```yaml
-Type: SwitchParameter
-Parameter Sets: (All)
+Type: String
+Parameter Sets: Get
 Aliases:
 
-Required: False
-Position: Named
+Required: True
+Position: 2
 Default value: None
-Accept pipeline input: False
+Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
 ### -List
-{{ Fill List Description }}
+List all available credentials.
 
 ```yaml
 Type: SwitchParameter
@@ -61,28 +61,13 @@ Aliases:
 
 Required: True
 Position: Named
-Default value: None
+Default value: False
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Name
-{{ Fill Name Description }}
-
-```yaml
-Type: String
-Parameter Sets: Get
-Aliases:
-
-Required: True
-Position: 1
-Default value: None
-Accept pipeline input: True (ByValue)
-Accept wildcard characters: False
-```
-
 ### -NoClipboard
-{{ Fill NoClipboard Description }}
+Do not copy the password to the clipboard.
 
 ```yaml
 Type: SwitchParameter
@@ -91,7 +76,22 @@ Aliases:
 
 Required: False
 Position: Named
-Default value: None
+Default value: False
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -AsEnvironmentVariable
+Store the password in an environment variable instead of returning a credential.
+
+```yaml
+Type: SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: False
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
@@ -101,11 +101,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### System.String
-
 ## OUTPUTS
 
-### System.Object
 ## NOTES
 
 ## RELATED LINKS

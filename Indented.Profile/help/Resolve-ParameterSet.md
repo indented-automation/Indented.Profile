@@ -8,22 +8,22 @@ schema: 2.0.0
 # Resolve-ParameterSet
 
 ## SYNOPSIS
-{{ Fill in the Synopsis }}
+Resolve a list of parameter names to a parameter set name.
 
 ## SYNTAX
 
 ### ByName
 ```
-Resolve-ParameterSet [-Name] <String> [<CommonParameters>]
+Resolve-ParameterSet [-Name] <String> -ParameterName <String[]> [<CommonParameters>]
 ```
 
 ### FromCommandInfo
 ```
-Resolve-ParameterSet -CommandInfo <CommandInfo> [<CommonParameters>]
+Resolve-ParameterSet -CommandInfo <CommandInfo> -ParameterName <String[]> [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-{{ Fill in the Description }}
+Resolve a list of parameter names to a parameter set name.
 
 ## EXAMPLES
 
@@ -36,8 +36,23 @@ PS C:\> {{ Add example code here }}
 
 ## PARAMETERS
 
+### -Name
+The name of a command.
+
+```yaml
+Type: String
+Parameter Sets: ByName
+Aliases:
+
+Required: True
+Position: 2
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
 ### -CommandInfo
-{{ Fill CommandInfo Description }}
+A CommandInfo object.
 
 ```yaml
 Type: CommandInfo
@@ -51,18 +66,18 @@ Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
-### -Name
-{{ Fill Name Description }}
+### -ParameterName
+A list of parameter names.
 
 ```yaml
-Type: String
-Parameter Sets: ByName
+Type: String[]
+Parameter Sets: (All)
 Aliases:
 
 Required: True
-Position: 1
+Position: Named
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -71,13 +86,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### System.String
-
-### System.Management.Automation.CommandInfo
-
 ## OUTPUTS
 
-### System.Object
 ## NOTES
 
 ## RELATED LINKS

@@ -15,7 +15,14 @@ function Get-CommandSource {
 
         # A CommandInfo object.
         [Parameter(Mandatory, ValueFromPipeline, ParameterSetName = 'FromCommandInfo')]
-        [System.Management.Automation.CommandInfo]$CommandInfo
+        [System.Management.Automation.CommandInfo]$CommandInfo,
+
+        # If a command is not public, a module name may be specified to get the command source.
+        [String]$ModuleName,
+
+        # If the command is a function, open code with the file content.
+        [Alias('Code')]
+        [Switch]$OpenWithCode
     )
 
     process {
@@ -34,7 +41,25 @@ function Get-CommandSource {
                     throw 'No decompiler present'
                 }
             } else {
-                $commandInfo.Definition
+                if ($OpenWithCode) {
+                    $process = [System.Diagnostics.Process]@{
+                        StartInfo = [System.Diagnostics.ProcessStartInfo]@{
+                            FileName              = (Get-Command code).Source
+                            Arguments             = '-'
+                            RedirectStandardInput = $true
+                            UseShellExecute       = $false
+                        }
+                    }
+                    if ($process.Start()) {
+                        $streamWriter = [System.IO.StreamWriter]$process.StandardInput
+                        $streamWriter.WriteLine('function {0} {{' -f $commandInfo.Name)
+                        $streamWriter.Write($commandInfo.Definition)
+                        $streamWriter.WriteLine('}')
+                        $streamWriter.Close()
+                    }
+                } else {
+                    $commandInfo.Definition
+                }
             }
         } catch {
             $pscmdlet.ThrowTerminatingError($_)

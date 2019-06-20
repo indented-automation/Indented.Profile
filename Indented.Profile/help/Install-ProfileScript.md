@@ -8,7 +8,7 @@ schema: 2.0.0
 # Install-ProfileScript
 
 ## SYNOPSIS
-{{ Fill in the Synopsis }}
+Install the profile script stored in this module.
 
 ## SYNTAX
 
@@ -17,7 +17,7 @@ Install-ProfileScript [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-{{ Fill in the Description }}
+Install the profile script stored in this module.
 
 ## EXAMPLES
 
@@ -35,11 +35,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### None
-
 ## OUTPUTS
 
-### System.Object
 ## NOTES
 
 ## RELATED LINKS

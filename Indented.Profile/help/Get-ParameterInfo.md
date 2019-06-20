@@ -8,22 +8,22 @@ schema: 2.0.0
 # Get-ParameterInfo
 
 ## SYNOPSIS
-{{ Fill in the Synopsis }}
+Creates a summary of a parameter from a command.
 
 ## SYNTAX
 
 ### ByName
 ```
-Get-ParameterInfo [-Name] <String> [-ParameterName <String>] [<CommonParameters>]
+Get-ParameterInfo [-Name] <String> [[-ParameterName] <String>] [<CommonParameters>]
 ```
 
 ### FromCommandInfo
 ```
-Get-ParameterInfo -CommandInfo <CommandInfo> [-ParameterName <String>] [<CommonParameters>]
+Get-ParameterInfo -CommandInfo <CommandInfo> [[-ParameterName] <String>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-{{ Fill in the Description }}
+Creates a summary of a parameter from a command.
 
 ## EXAMPLES
 
@@ -36,8 +36,23 @@ PS C:\> {{ Add example code here }}
 
 ## PARAMETERS
 
+### -Name
+The name of a command.
+
+```yaml
+Type: String
+Parameter Sets: ByName
+Aliases:
+
+Required: True
+Position: 2
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
 ### -CommandInfo
-{{ Fill CommandInfo Description }}
+A CommandInfo object.
 
 ```yaml
 Type: CommandInfo
@@ -51,23 +66,9 @@ Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
-### -Name
-{{ Fill Name Description }}
-
-```yaml
-Type: String
-Parameter Sets: ByName
-Aliases:
-
-Required: True
-Position: 1
-Default value: None
-Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
 ### -ParameterName
-{{ Fill ParameterName Description }}
+The name of a parameter.
+Supports wildcards.
 
 ```yaml
 Type: String
@@ -75,8 +76,8 @@ Parameter Sets: (All)
 Aliases:
 
 Required: False
-Position: Named
-Default value: None
+Position: 3
+Default value: *
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
@@ -86,13 +87,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### System.String
-
-### System.Management.Automation.CommandInfo
-
 ## OUTPUTS
 
-### System.Object
 ## NOTES
 
 ## RELATED LINKS

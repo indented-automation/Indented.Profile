@@ -8,7 +8,7 @@ schema: 2.0.0
 # Restart-Console
 
 ## SYNOPSIS
-{{ Fill in the Synopsis }}
+Restart the console.
 
 ## SYNTAX
 
@@ -17,7 +17,7 @@ Restart-Console
 ```
 
 ## DESCRIPTION
-{{ Fill in the Description }}
+Restart the console and put it back where I left it.
 
 ## EXAMPLES
 
@@ -32,11 +32,8 @@ PS C:\> {{ Add example code here }}
 
 ## INPUTS
 
-### None
-
 ## OUTPUTS
 
-### System.Object
 ## NOTES
 
 ## RELATED LINKS

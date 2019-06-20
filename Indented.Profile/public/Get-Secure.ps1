@@ -1,22 +1,34 @@
 function Get-Secure {
+    <#
+    .SYNOPSIS
+        Get a stored credential.
+    .DESCRIPTION
+        Get a stored credential.
+    #>
+
     [CmdletBinding(DefaultParameterSetName = 'Get')]
     param (
+        # The name which identifies a credential.
         [Parameter(Mandatory, Position = 1, ValueFromPipeline, ParameterSetName = 'Get')]
         [String]$Name,
 
+        # List all available credentials.
         [Parameter(Mandatory, ParameterSetName = 'List')]
         [Switch]$List,
 
+        # Do not copy the password to the clipboard.
         [Switch]$NoClipboard,
 
+        # Store the password in an environment variable instead of returning a credential.
         [Switch]$AsEnvironmentVariable
     )
 
     begin {
         if ($List) {
-            Get-ChildItem $home\Documents\Keys |
-                Select-Object @{n='Name';e={ $_.BaseName }},
-                              @{n='Created';e={ $_.CreationTime }}
+            Get-ChildItem $home\Documents\Keys | Select-Object @(
+                @{n='Name';e={ $_.BaseName }},
+                @{n='Created';e={ $_.CreationTime }}
+            )
         }
     }
 

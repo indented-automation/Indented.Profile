@@ -1,4 +1,11 @@
 function Start-ElevatedConsole {
+    <#
+    .SYNOPSIS
+        Creates a new elevated PowerShell session.
+    .DESCRIPTION
+        Creates a new elevated PowerShell session, supports all versions of PowerShell.
+    #>
+
     [CmdletBinding()]
     [Alias('elevate')]
     param ( )

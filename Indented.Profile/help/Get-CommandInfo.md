@@ -14,12 +14,12 @@ Get-Command helper.
 
 ### ByName
 ```
-Get-CommandInfo -Name <String> [-EaterOfArgs <Object>] [<CommonParameters>]
+Get-CommandInfo -Name <String> [-ModuleName <String>] [-EaterOfArgs <Object>] [<CommonParameters>]
 ```
 
 ### FromCommandInfo
 ```
-Get-CommandInfo -CommandInfo <CommandInfo> [-EaterOfArgs <Object>] [<CommonParameters>]
+Get-CommandInfo -CommandInfo <CommandInfo> [-ModuleName <String>] [-EaterOfArgs <Object>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -60,6 +60,21 @@ Parameter Sets: FromCommandInfo
 Aliases:
 
 Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ModuleName
+If a module name is specified the private / internal scope of the module will be searched.
+
+```yaml
+Type: String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False

@@ -8,7 +8,7 @@ schema: 2.0.0
 # Update-WindowTitle
 
 ## SYNOPSIS
-{{ Fill in the Synopsis }}
+Set the window title to something else.
 
 ## SYNTAX
 
@@ -17,7 +17,7 @@ Update-WindowTitle
 ```
 
 ## DESCRIPTION
-{{ Fill in the Description }}
+Set the window title to something else.
 
 ## EXAMPLES
 
@@ -32,11 +32,8 @@ PS C:\> {{ Add example code here }}
 
 ## INPUTS
 
-### None
-
 ## OUTPUTS
 
-### System.Object
 ## NOTES
 
 ## RELATED LINKS

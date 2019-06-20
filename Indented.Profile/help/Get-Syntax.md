@@ -8,7 +8,7 @@ schema: 2.0.0
 # Get-Syntax
 
 ## SYNOPSIS
-{{ Fill in the Synopsis }}
+Get the syntax for a command.
 
 ## SYNTAX
 
@@ -23,7 +23,8 @@ Get-Syntax -CommandInfo <CommandInfo> [-Long] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-{{ Fill in the Description }}
+Get the syntax for a command.
+A wrapper for Get-Command -Syntax.
 
 ## EXAMPLES
 
@@ -36,8 +37,23 @@ PS C:\> {{ Add example code here }}
 
 ## PARAMETERS
 
+### -Name
+The name of a command.
+
+```yaml
+Type: String
+Parameter Sets: ByName
+Aliases:
+
+Required: True
+Position: 2
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
 ### -CommandInfo
-{{ Fill CommandInfo Description }}
+A CommandInfo object.
 
 ```yaml
 Type: CommandInfo
@@ -52,7 +68,7 @@ Accept wildcard characters: False
 ```
 
 ### -Long
-{{ Fill Long Description }}
+Write syntax output in a vertical format.
 
 ```yaml
 Type: SwitchParameter
@@ -61,23 +77,8 @@ Aliases:
 
 Required: False
 Position: Named
-Default value: None
+Default value: False
 Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -Name
-{{ Fill Name Description }}
-
-```yaml
-Type: String
-Parameter Sets: ByName
-Aliases:
-
-Required: True
-Position: 1
-Default value: None
-Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
@@ -86,13 +87,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### System.String
-
-### System.Management.Automation.CommandInfo
-
 ## OUTPUTS
 
-### System.Object
 ## NOTES
 
 ## RELATED LINKS

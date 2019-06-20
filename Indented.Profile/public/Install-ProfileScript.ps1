@@ -1,4 +1,11 @@
 function Install-ProfileScript {
+    <#
+    .SYNOPSIS
+        Install the profile script stored in this module.
+    .DESCRIPTION
+        Install the profile script stored in this module.
+    #>
+
     [CmdletBinding()]
     param ( )
 

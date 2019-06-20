@@ -1,13 +1,23 @@
 function Get-Syntax {
+    <#
+    .SYNOPSIS
+        Get the syntax for a command.
+    .DESCRIPTION
+        Get the syntax for a command. A wrapper for Get-Command -Syntax.
+    #>
+
     [CmdletBinding()]
     [Alias('synt', 'syntax')]
     param (
+        # The name of a command.
         [Parameter(Mandatory, Position = 1, ValueFromPipelineByPropertyName, ParameterSetName = 'ByName')]
         [String]$Name,
 
+        # A CommandInfo object.
         [Parameter(Mandatory, ValueFromPipeline, ParameterSetName = 'FromCommandInfo')]
         [System.Management.Automation.CommandInfo]$CommandInfo,
 
+        # Write syntax output in a vertical format.
         [Switch]$Long
     )
 

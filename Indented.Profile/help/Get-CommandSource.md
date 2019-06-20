@@ -14,12 +14,12 @@ Get the source of a command.
 
 ### ByName
 ```
-Get-CommandSource [-Name] <String> [<CommonParameters>]
+Get-CommandSource [-Name] <String> [-ModuleName <String>] [-OpenWithCode] [<CommonParameters>]
 ```
 
 ### FromCommandInfo
 ```
-Get-CommandSource -CommandInfo <CommandInfo> [<CommonParameters>]
+Get-CommandSource -CommandInfo <CommandInfo> [-ModuleName <String>] [-OpenWithCode] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -63,6 +63,36 @@ Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
+### -ModuleName
+If a command is not public, a module name may be specified to get the command source.
+
+```yaml
+Type: String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -OpenWithCode
+If the command is a function, open code with the file content.
+
+```yaml
+Type: SwitchParameter
+Parameter Sets: (All)
+Aliases: Code
+
+Required: False
+Position: Named
+Default value: False
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 

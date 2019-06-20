@@ -1,11 +1,24 @@
 function Resolve-ParameterSet {
+    <#
+    .SYNOPSIS
+        Resolve a list of parameter names to a parameter set name.
+    .DESCRIPTION
+        Resolve a list of parameter names to a parameter set name.
+    #>
+
     [CmdletBinding()]
     param (
+        # The name of a command.
         [Parameter(Mandatory, Position = 1, ValueFromPipelineByPropertyName, ParameterSetName = 'ByName')]
         [String]$Name,
 
+        # A CommandInfo object.
         [Parameter(Mandatory, ValueFromPipeline, ParameterSetName = 'FromCommandInfo')]
-        [System.Management.Automation.CommandInfo]$CommandInfo
+        [System.Management.Automation.CommandInfo]$CommandInfo,
+
+        # A list of parameter names.
+        [Parameter(Mandatory)]
+        [String[]]$ParameterName
     )
 
     try {
@@ -45,6 +58,6 @@ function Resolve-ParameterSet {
             throw 'Failed to find parameter set'
         }
     } catch {
-        throw
+        $pscmdlet.ThrowTerminatingError($_)
     }
 }
