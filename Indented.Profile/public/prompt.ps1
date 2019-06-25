@@ -58,7 +58,7 @@ function Global:prompt {
 
     function Get-VcsStatus {
         $gitStatusOutput = (git status -s -b 2>$null) -split '\r?\n'
-        if ($gitStatusOutput[0] -match '^## (?<local>\S+)\.{3}(?<remote>\S+)(?: \[)?(?:ahead (?<ahead>\d+))?(?:, )?(?:behind (?<behind>\d+))?' -or
+        if ($gitStatusOutput[0] -match '^## (?<local>[^.]+)(\.{3}(?<remote>\S+))?(?: \[)?(?:ahead (?<ahead>\d+))?(?:, )?(?:behind (?<behind>\d+))?' -or
             $gitStatusOutput[0] -match '^## HEAD \(no branch\)') {
 
             if (-not $matches['local']) {
@@ -156,7 +156,10 @@ function Global:prompt {
             $offset
             Write-ColourfulString -Colour Purple -String $timeTaken
         )
+
+        "`n{0}`n{1}|PS> " -f $prompt, ($lastCommand.Id + 1)
+    } else {
+        "`n{0}`n1|PS> " -f $prompt
     }
 
-    "`n{0}`nPS> " -f $prompt
 }
