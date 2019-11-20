@@ -18,7 +18,7 @@ function Get-Syntax {
         [System.Management.Automation.CommandInfo]$CommandInfo,
 
         # Write syntax in the short format used by Get-Command.
-        [Switch]$Normalise
+        [Switch]$Short
     )
 
     begin {
