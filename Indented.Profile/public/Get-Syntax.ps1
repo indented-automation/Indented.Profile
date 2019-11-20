@@ -17,7 +17,7 @@ function Get-Syntax {
         [Parameter(Mandatory, ValueFromPipeline, ParameterSetName = 'FromCommandInfo')]
         [System.Management.Automation.CommandInfo]$CommandInfo,
 
-        # Write syntax output in a vertical format.
+        # Write syntax in the short format used by Get-Command.
         [Switch]$Normalise
     )
 
