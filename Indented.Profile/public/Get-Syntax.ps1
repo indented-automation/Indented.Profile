@@ -17,8 +17,8 @@ function Get-Syntax {
         [Parameter(Mandatory, ValueFromPipeline, ParameterSetName = 'FromCommandInfo')]
         [System.Management.Automation.CommandInfo]$CommandInfo,
 
-        # Write syntax output in a vertical format.
-        [Switch]$Long
+        # Write syntax in the short format used by Get-Command.
+        [Switch]$Short
     )
 
     begin {
@@ -32,7 +32,9 @@ function Get-Syntax {
     process {
         $CommandInfo = Get-CommandInfo @psboundparameters
         foreach ($parameterSet in $CommandInfo.ParameterSets) {
-            if ($Long) {
+            if ($Short) {
+                "`n{0} {1}" -f $CommandInfo.Name, $parameterSet
+            } else {
                 $stringBuilder = [System.Text.StringBuilder]::new().AppendFormat('{0} ', $commandInfo.Name)
 
                 $null = foreach ($parameter in $parameterSet.Parameters) {
@@ -64,8 +66,6 @@ function Get-Syntax {
                 }
 
                 $stringBuilder.AppendLine().ToString()
-            } else {
-                "`n{0} {1}" -f $CommandInfo.Name, $parameterSet
             }
         }
     }
