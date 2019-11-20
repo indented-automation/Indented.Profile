@@ -18,7 +18,7 @@ function Get-Syntax {
         [System.Management.Automation.CommandInfo]$CommandInfo,
 
         # Write syntax output in a vertical format.
-        [Switch]$Long
+        [Switch]$Normalise
     )
 
     begin {
@@ -32,7 +32,9 @@ function Get-Syntax {
     process {
         $CommandInfo = Get-CommandInfo @psboundparameters
         foreach ($parameterSet in $CommandInfo.ParameterSets) {
-            if ($Long) {
+            if ($Normalise) {
+                "`n{0} {1}" -f $CommandInfo.Name, $parameterSet
+            } else {
                 $stringBuilder = [System.Text.StringBuilder]::new().AppendFormat('{0} ', $commandInfo.Name)
 
                 $null = foreach ($parameter in $parameterSet.Parameters) {
@@ -64,8 +66,6 @@ function Get-Syntax {
                 }
 
                 $stringBuilder.AppendLine().ToString()
-            } else {
-                "`n{0} {1}" -f $CommandInfo.Name, $parameterSet
             }
         }
     }
