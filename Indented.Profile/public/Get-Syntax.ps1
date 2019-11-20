@@ -32,7 +32,7 @@ function Get-Syntax {
     process {
         $CommandInfo = Get-CommandInfo @psboundparameters
         foreach ($parameterSet in $CommandInfo.ParameterSets) {
-            if ($Normalise) {
+            if ($Short) {
                 "`n{0} {1}" -f $CommandInfo.Name, $parameterSet
             } else {
                 $stringBuilder = [System.Text.StringBuilder]::new().AppendFormat('{0} ', $commandInfo.Name)
