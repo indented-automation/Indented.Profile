@@ -2,6 +2,7 @@ function Set-Secure {
     <#
     .SYNOPSIS
         Store a credential.
+
     .DESCRIPTION
         Store a credential in an xml file created
     #>
@@ -19,10 +20,10 @@ function Set-Secure {
         $credential = Get-Credential (Get-Secure $Name -NoClipboard).Username
     } else {
         if (-not(Test-Path $folder)) {
-            New-Item -Path $folder -ItemType "Directory" -ErrorAction Stop
+            $null = New-Item -Path $folder -ItemType "Directory" -ErrorAction Stop
         }
         $credential = Get-Credential
         if ($null -eq $credential) { return }
     }
-    $credential | Export-CliXml $path
+    $credential | Export-Clixml -Path $path
 }

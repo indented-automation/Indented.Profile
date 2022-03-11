@@ -2,6 +2,7 @@ function Get-ParameterInfo {
     <#
     .SYNOPSIS
         Creates a summary of a parameter from a command.
+
     .DESCRIPTION
         Creates a summary of a parameter from a command.
     #>
@@ -11,16 +12,16 @@ function Get-ParameterInfo {
     param (
         # The name of a command.
         [Parameter(Mandatory, Position = 1, ValueFromPipelineByPropertyName, ParameterSetName = 'ByName')]
-        [String]$Name,
+        [string]$Name,
 
         # A CommandInfo object.
         [Parameter(Mandatory, ValueFromPipeline, ParameterSetName = 'FromCommandInfo')]
-        [System.Management.Automation.CommandInfo]$CommandInfo,
+        [system.Management.Automation.CommandInfo]$CommandInfo,
 
         # The name of a parameter. Supports wildcards.
         [Parameter(Position = 2, ParameterSetName = 'ByName')]
         [Parameter(ParameterSetName = 'FromCommandInfo')]
-        [String]$ParameterName = '*'
+        [string]$ParameterName = '*'
     )
 
     begin {

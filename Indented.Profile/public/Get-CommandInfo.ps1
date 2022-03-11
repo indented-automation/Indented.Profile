@@ -2,6 +2,7 @@ function Get-CommandInfo {
     <#
     .SYNOPSIS
         Get-Command helper.
+
     .DESCRIPTION
         Get-Command helper.
     #>
@@ -10,14 +11,14 @@ function Get-CommandInfo {
     param (
         # The name of a command.
         [Parameter(Mandatory, ParameterSetName = 'ByName')]
-        [String]$Name,
+        [string]$Name,
 
         # A CommandInfo object.
         [Parameter(Mandatory, ParameterSetName = 'FromCommandInfo')]
         [System.Management.Automation.CommandInfo]$CommandInfo,
 
         # If a module name is specified the private / internal scope of the module will be searched.
-        [String]$ModuleName,
+        [string]$ModuleName,
 
         # Claims and discards any other supplied arguments.
         [Parameter(ValueFromRemainingArguments, DontShow)]

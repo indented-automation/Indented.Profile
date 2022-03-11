@@ -2,6 +2,7 @@ function Install-ProfileScript {
     <#
     .SYNOPSIS
         Install the profile script stored in this module.
+
     .DESCRIPTION
         Install the profile script stored in this module.
     #>
@@ -9,12 +10,12 @@ function Install-ProfileScript {
     [CmdletBinding()]
     param ( )
 
-    $parent = Split-Path $profile.CurrentUserAllHosts -Parent
+    $parent = Split-Path -Path $profile.CurrentUserAllHosts -Parent
     if (-not $parent) {
-        $null = New-Item $parent -ItemType Directory -Force
+        $null = New-Item -Path $parent -ItemType Directory -Force
     }
     $params = @{
-        Path        = Join-Path $myinvocation.MyCommand.Module.ModuleBase 'scripts\profile.ps1'
+        Path        = Join-Path -Path $myinvocation.MyCommand.Module.ModuleBase -ChildPath 'scripts\profile.ps1'
         Destination = $profile.CurrentUserAllHosts
         Force       = $true
     }

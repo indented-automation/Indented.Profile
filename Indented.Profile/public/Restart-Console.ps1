@@ -6,6 +6,11 @@ function Restart-Console {
         Restart the console and put it back where I left it.
     #>
 
+    [CmdletBinding()]
+    param (
+        [switch]$NoProfile
+    )
+
     if (-not ('Window' -as [Type])) {
         Add-Type '
             using System;
@@ -33,29 +38,42 @@ function Restart-Console {
 
     $thisProcess = Get-Process -Id $PID
 
-    $rect = [RECT]::new()
-    $hasPosition = [Window]::GetWindowRect(
-        $thisProcess.MainWindowHandle,
-        [Ref]$rect
-    )
-
-    $newProcess = Start-Process $thisProcess.Path -PassThru -ArgumentList @(
+    $argumentList = @(
         '-NoExit'
+        @('', '-NoProfile')[[bool]$NoProfile]
         '-Command'
-        "Set-Location $($pwd.Path)"
-    )
-    Start-Sleep -Milliseconds 100
+        'if (Test-Path "{0}") {{ Set-Location "{0}" }}' -f $pwd.Path
+    ) -ne ''
 
-    if ($hasPosition) {
-        $null = [Window]::SetWindowPos(
-            $newProcess.MainWindowHandle,
+    if ($env:WT_SESSION) {
+        # Could look these up, but...
+        $profileName = switch ($thisProcess.Name) {
+            'pwsh' { 'PowerShell' }
+            'powershell' { 'Windows PowerShell' }
+        }
+
+        wt -w 0 """$profileName""" @argumentList
+    } else {
+        $rect = [RECT]::new()
+        $hasPosition = [Window]::GetWindowRect(
             $thisProcess.MainWindowHandle,
-            $rect.Left,
-            $rect.Top,
-            -1,
-            -1,
-            1
+            [Ref]$rect
         )
+
+        $newProcess = Start-Process $thisProcess.Path -PassThru -ArgumentList $argumentList
+        Start-Sleep -Milliseconds 100
+
+        if ($hasPosition) {
+            $null = [Window]::SetWindowPos(
+                $newProcess.MainWindowHandle,
+                $thisProcess.MainWindowHandle,
+                $rect.Left,
+                $rect.Top,
+                -1,
+                -1,
+                1
+            )
+        }
     }
 
     exit

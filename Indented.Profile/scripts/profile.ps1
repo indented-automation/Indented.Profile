@@ -2,9 +2,9 @@ Import-Module Indented.Profile, Terminal-Icons
 
 Update-WindowTitle
 
-Set-PSReadlineOption -BellStyle None
+Set-PSReadLineOption -BellStyle None
 
-'NugetApiKey', 'AWS_ACCESS_KEY_ID', 'AWS_SECRET_ACCESS_KEY' | Get-Secure -AsEnvironmentVariable
+'NugetApiKey' | Get-Secure -AsEnvironmentVariable
 
 $params = @{
     Name  = 'msbuild'
@@ -16,3 +16,14 @@ Remove-Variable params
 if ($pwd.Path -notmatch '^C:\\Development') {
     Set-Location "C:\Development"
 }
+
+if ($PSEdition -eq 'Core') {
+    Set-PSReadLineOption -Colors @{
+        Command   = "`e[92m"
+        Operator  = "`e[97m"
+        Parameter = "`e[97m"
+        Variable  = "`e[96m"
+    }
+}
+
+$env:ADPS_LoadDefaultDrive = 0

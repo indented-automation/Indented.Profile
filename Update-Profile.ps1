@@ -1,9 +1,9 @@
 try {
-    Start-Build -BuildType Setup, Build
+    & (Join-Path -Path $PSScriptRoot -ChildPath 'build.ps1')
 
-    . $psscriptroot\Indented.Profile\public\prompt.ps1
+    . $PSScriptRoot\Indented.Profile\scripts\prompt.ps1
 
-    if ($module = Get-Module Indented.Profile -ListAvailable) {
+    if ($module = Get-Module Indented.Profile -ListAvailable | Sort-Object Version | Select-Object -Last 1) {
         $destination = $module.ModuleBase -replace '\\(\d+\.)*\d+'
     } else {
         if ($PSVersion.Version.Major -gt 5) {
@@ -17,7 +17,7 @@ try {
         $null = New-Item -Path $destination -ItemType Directory -Force
     }
 
-    Copy-Item $psscriptroot\build\Indented.Profile\* -Destination $destination -Recurse -Force
+    Copy-Item $PSScriptRoot\build\Indented.Profile\* -Destination $destination -Recurse -Force
 } catch {
     throw
 }

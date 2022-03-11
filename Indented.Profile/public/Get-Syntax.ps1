@@ -2,6 +2,7 @@ function Get-Syntax {
     <#
     .SYNOPSIS
         Get the syntax for a command.
+
     .DESCRIPTION
         Get the syntax for a command. A wrapper for Get-Command -Syntax.
     #>
@@ -11,14 +12,14 @@ function Get-Syntax {
     param (
         # The name of a command.
         [Parameter(Mandatory, Position = 1, ValueFromPipelineByPropertyName, ParameterSetName = 'ByName')]
-        [String]$Name,
+        [string]$Name,
 
         # A CommandInfo object.
         [Parameter(Mandatory, ValueFromPipeline, ParameterSetName = 'FromCommandInfo')]
         [System.Management.Automation.CommandInfo]$CommandInfo,
 
         # Write syntax in the short format used by Get-Command.
-        [Switch]$Short
+        [switch]$Short
     )
 
     begin {

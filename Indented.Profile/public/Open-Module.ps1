@@ -2,6 +2,7 @@ function Open-Module {
     <#
     .SYNOPSIS
         Open the specified module in Visual Studio Code.
+
     .DESCRIPTION
         Open the specified module in Visual Studio Code.
     #>
@@ -10,7 +11,7 @@ function Open-Module {
     param (
         # The name of the module to open.
         [Parameter(Mandatory)]
-        [String]$ModuleName,
+        [string]$ModuleName,
 
         # The version of the module to open.
         [Version]$Version

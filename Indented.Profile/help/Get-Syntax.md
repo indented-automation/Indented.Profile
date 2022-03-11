@@ -14,12 +14,12 @@ Get the syntax for a command.
 
 ### ByName
 ```
-Get-Syntax [-Name] <String> [-Long] [<CommonParameters>]
+Get-Syntax [-Name] <String> [-Short] [<CommonParameters>]
 ```
 
 ### FromCommandInfo
 ```
-Get-Syntax -CommandInfo <CommandInfo> [-Long] [<CommonParameters>]
+Get-Syntax -CommandInfo <CommandInfo> [-Short] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -67,8 +67,8 @@ Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
-### -Long
-Write syntax output in a vertical format.
+### -Short
+Write syntax in the short format used by Get-Command.
 
 ```yaml
 Type: SwitchParameter

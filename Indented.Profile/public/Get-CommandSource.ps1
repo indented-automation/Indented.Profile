@@ -2,6 +2,7 @@ function Get-CommandSource {
     <#
     .SYNOPSIS
         Get the source of a command.
+
     .DESCRIPTION
         Get the source of a command.
     #>
@@ -11,18 +12,18 @@ function Get-CommandSource {
     param (
         # The name of a command.
         [Parameter(Mandatory, Position = 1, ValueFromPipelineByPropertyName, ParameterSetName = 'ByName')]
-        [String]$Name,
+        [string]$Name,
 
         # A CommandInfo object.
         [Parameter(Mandatory, ValueFromPipeline, ParameterSetName = 'FromCommandInfo')]
         [System.Management.Automation.CommandInfo]$CommandInfo,
 
         # If a command is not public, a module name may be specified to get the command source.
-        [String]$ModuleName,
+        [string]$ModuleName,
 
         # If the command is a function, open code with the file content.
         [Alias('Code')]
-        [Switch]$OpenWithCode
+        [switch]$OpenWithCode
     )
 
     process {
