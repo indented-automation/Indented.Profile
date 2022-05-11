@@ -46,13 +46,7 @@ function Restart-Console {
     ) -ne ''
 
     if ($env:WT_SESSION) {
-        # Could look these up, but...
-        $profileName = switch ($thisProcess.Name) {
-            'pwsh' { 'PowerShell' }
-            'powershell' { 'Windows PowerShell' }
-        }
-
-        wt -w 0 """$profileName""" @argumentList
+        wt -w 0 $thisProcess.Name @argumentList
     } else {
         $rect = [RECT]::new()
         $hasPosition = [Window]::GetWindowRect(
